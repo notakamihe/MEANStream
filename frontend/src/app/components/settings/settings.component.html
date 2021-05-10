@@ -1,0 +1,60 @@
+<div class="mx-auto text-center" style="margin-top: 5rem; margin-bottom: 9rem;">
+    <h4 class="mb-4" style="font-weight: bold;">Settings</h4>
+    <div>
+        <div>
+            <h5 class="text-gradient-1" style="font-size: 1.6rem;">Profile</h5>
+            <div>
+                <div class="my-2">
+                    <button class="btn-6" (click)="logOutUser()">Log out</button>
+                </div>
+                <div class="my-2">
+                    <a class="btn-6" routerLink="/tabs/profile/edit">Edit profile</a>
+                </div>
+                <div class="my-2">
+                    <a class="btn-6" routerLink="/tabs/profile/change-password">Change password</a>
+                </div>
+                <div class="my-2">
+                    <button class="btn-6" (click)="deleteProfile()">Delete profile</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h5 class="text-gradient-1" style="font-size: 1.6rem;">Activity</h5>
+            <div>
+                <div class="my-2">
+                    <button 
+                        class="btn-6"
+                        (click)="privateAll()"
+                    >
+                        Private all songs and collections
+                    </button>
+                </div>
+                <div class="my-2">
+                    <button 
+                        class="btn-6" 
+                        (click)="removeAllLikesAndComments()"
+                    >
+                        Remove all likes and comments
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h5 class="text-gradient-1" style="font-size: 1.6rem;">Help</h5>
+            <div>
+                <div class="my-2">
+                    <a class="btn-6" href="mailto:notakamihe@gmail.com">Email</a>
+                </div>
+                <div class="my-2">
+                    <a 
+                        class="btn-6" 
+                        (click)="openGithub()"
+                    >
+                        Github
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
