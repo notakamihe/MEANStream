@@ -3,3 +3,7 @@ release/** filter=lfs diff=lfs merge=lfs -text
 
 * linguist-vendored
 *.ts linguist-vendored=false
+*.html linguist-vendored=false
+*.css linguist-vendored=false
+*.js linguist-vendored=false
+
