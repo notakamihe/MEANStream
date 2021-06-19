@@ -1,0 +1,303 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+* {
+    line-height: normal!important;
+}
+
+:root {
+    --main-color: #ff3333;
+}
+
+a:hover {
+    color: var(--main-color);
+}
+
+.btn-1 {
+    margin: 0.3rem 0; 
+    background-color: #ff3333; 
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 25rem;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+}
+
+.btn-1:hover {
+    color: #fffa;
+}
+
+.btn-2 {
+    background-color: transparent;
+    padding: 0; 
+    height: auto;
+    color: black;
+}
+
+.btn-2-selected mat-icon {
+    color: var(--main-color);
+    transition: all 0.2s ease;
+}
+
+.no-outline {
+    outline: none;
+}
+
+.text-field {
+    border-radius: 1rem; 
+    border: none; 
+    background-color: #0002; 
+    padding: 0.3rem 0.3rem 0.3rem 1rem;
+    outline: none;
+}
+
+.text-field:focus {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    color: #fff;
+}
+
+.text-field:focus::placeholder {
+    color: #fff8;
+}
+
+.text1 {
+    text-align: center; 
+    margin: auto; 
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: smaller;
+    color: var(--main-color);
+}
+
+.text1:hover {
+    color: #ff5500;
+}
+
+.no-border {
+    border: none;
+}
+
+.no-btn {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background-color: #0000;
+}
+
+.btn-3 {
+    margin: 0.3rem 0; 
+    background: linear-gradient(90deg, var(--main-color) 0%, #ff5500 90%);; 
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: x-small;
+    text-transform: uppercase;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.btn-3:hover {
+    color: #fff;
+}
+
+.btn-4 {
+    margin: 0.3rem 0; 
+    background-color: #f50; 
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: x-small;
+    text-transform: uppercase;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-4:hover {
+    color: #fff;
+}
+
+.btn-5 {
+    margin: 0.3rem 0; 
+    background-color: #f33; 
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: x-small;
+    text-transform: uppercase;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-5:hover {
+    color: #fff;
+}
+
+.color-on-hover:hover {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    color: white!important;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    border-radius: inherit;
+}
+
+.color-on-hover:hover * {
+    color: white!important;
+}
+
+.btn-6 {
+    background-color: #0000;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn-6:hover {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-7 {
+    border: none;
+    background-color: #fff;
+    padding: 0.4rem;
+    border-radius: 0.25rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+    font-size: smaller;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-decor {
+    text-decoration: none;
+    color: unset;
+    outline: none;
+}
+
+.song-collection-cover {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 0.3rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.scrollbar1::-webkit-scrollbar {
+    height: 0.6rem;
+    width: 0.6rem;
+}
+
+.scrollbar1::-webkit-scrollbar-thumb {
+    background-color: #ff3333;
+    border-radius: 2rem
+}
+
+.btn-8 {
+    background-color: #ff3333; 
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-gradient-1 {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bottom-line-gradient {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-image: linear-gradient(to right, var(--main-color) 75%, #f50);
+    border-image-slice: 1;
+}
+
+#search input[type="search"] {
+    border-radius: 2rem 0 0 2rem;
+    margin-right: 0.25rem;
+    border: none;
+    background-color: #00000015;
+    padding: 0.5rem;
+    padding-left: 1rem;
+}
+
+#search input[type="search"]:focus {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    color: white;
+}
+
+#search input[type="search"]:focus::placeholder {
+    color: #fffa;
+}
+
+#search button[type="submit"] {
+    border-radius: 0 2rem 2rem 0;
+    background-color: #ff3333; 
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-1 {
+    border-radius: 1rem; 
+    border: none; 
+    background-color: #0002; 
+    padding: 0.3rem 0.3rem 0.3rem 1rem;
+    outline: none;
+}
+
+.dropdown-1:focus {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    color: white;
+}
+
+.dropdown-1 option {
+    color: white;
+    background-color: black;
+    border-radius: 1rem;
+    text-transform: capitalize;
+}
+
+.dropdown-1::-webkit-scrollbar-track {
+    background-color: #000;
+}
+
+.selected-1 {
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    color: white;
+}
+
+.fit-background {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

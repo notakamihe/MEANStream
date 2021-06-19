@@ -1,0 +1,16 @@
+directories:
+  output: release
+  buildResources: dist
+appId: com.michaelakamihe.meanstream
+productName: MEANStream
+files:
+  - filter:
+      - '**/*'
+      - dist/**/*
+mac:
+  target:
+    - dmg
+  icon: build/meanstream.png
+nsis:
+  runAfterFinish: true
+electronVersion: 12.0.7

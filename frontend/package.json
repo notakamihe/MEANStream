@@ -1,0 +1,105 @@
+{
+  "name": "frontend2",
+  "version": "0.0.0",
+  "main": "main.js",
+  "publisher": "Michael Akamihe",
+  "author": "Michael Akamihe",
+  "build": {
+    "appId": "com.michaelakamihe.meanstream",
+    "productName": "MEANStream",
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "dist"
+    },
+    "asar": false,
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/meanstream.png", 
+      "publisherName": "Michael Akamihe"
+    },
+    "mac": {
+        "target": [
+            "dmg"
+        ],
+        "icon": "build/meanstream.png"
+    },
+    "nsis": {
+      "runAfterFinish": true
+    }
+  },
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "start": "ng build --base-href ./ && electron .",
+    "dist": "electron-builder"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~11.2.12",
+    "@angular/cdk": "^11.2.11",
+    "@angular/common": "~11.2.12",
+    "@angular/compiler": "~11.2.12",
+    "@angular/core": "^11.2.13",
+    "@angular/forms": "~11.2.12",
+    "@angular/material": "^11.2.11",
+    "@angular/platform-browser": "~11.2.12",
+    "@angular/platform-browser-dynamic": "~11.2.12",
+    "@angular/router": "~11.2.12",
+    "@igniteui/material-icons-extended": "^2.4.0",
+    "@types/axios": "^0.14.0",
+    "angular-bootstrap-md": "^11.0.0",
+    "classlist.js": "^1.1.20150312",
+    "cross-env": "^7.0.3",
+    "dotenv": "^9.0.1",
+    "electron-prompt": "^1.6.2",
+    "fs": "0.0.1-security",
+    "hammerjs": "^2.0.8",
+    "igniteui-angular": "^11.1.9",
+    "jszip": "^3.6.0",
+    "minireset.css": "~0.0.4",
+    "moment": "^2.29.1",
+    "ngx-electron": "^2.2.0",
+    "numeral": "^2.0.6",
+    "path": "^0.12.7",
+    "resize-observer-polyfill": "^1.5.1",
+    "rxjs": "~6.6.0",
+    "stream": "0.0.2",
+    "tslib": "^2.0.0",
+    "web-animations-js": "^2.3.2",
+    "zone.js": "~0.11.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1102.11",
+    "@angular/cli": "~11.2.11",
+    "@angular/compiler-cli": "~11.2.12",
+    "@igniteui/angular-schematics": "~11.1.710",
+    "@types/hammerjs": "^2.0.36",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^14.14.33",
+    "codelyzer": "^6.0.0",
+    "concurrently": "^6.0.2",
+    "electron": "^12.0.7",
+    "electron-builder": "^22.11.1",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~6.1.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.1.5",
+    "wait-on": "^5.3.0"
+  }
+}
