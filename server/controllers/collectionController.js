@@ -4,6 +4,7 @@ const User = require("./../models/User")
 
 const { isOIdInDatabase } = require("../utils/utils")
 const moment = require("moment")
+const { uploadFile } = require("../s3")
 
 const getPopulatedCollection = (collection, res) => {
     collection.populate("songs").populate("user").execPopulate((err, doc) => {
@@ -167,9 +168,13 @@ module.exports.updateCollection = async (req, res) => {
 }
 
 module.exports.updateCollectionCover = async (req, res) => {
-    const coverUrl = req.file ? req.file.path : null
+    const cover = req.file
 
-    Collection.findByIdAndUpdate(req.params.id, {coverUrl: coverUrl}, {new: true}, (err, doc) => {
+    if (cover) {
+        await uploadFile(cover)
+    }
+
+    Collection.findByIdAndUpdate(req.params.id, {coverUrl: cover?.path}, {new: true}, (err, doc) => {
         if (err) {
             console.log(err);
             return res.status(500).send("Could not update collection.")

@@ -5,6 +5,8 @@ const Comment = require("./../models/Comment")
 const Song = require("./../models/Song")
 const User = require("./../models/User")
 
+const {uploadFile} = require("./../s3")
+
 const utils = require("./../utils/utils")
 
 const getPopulatedSong = (song, res) => {
@@ -92,7 +94,6 @@ module.exports.createSong = async (req, res) => {
     } catch (err) {
         return res.status(400).send(`User w/ id of ${req.body.user} does not exist.`)
     }
-
 
     const song = new Song({
         description: req.body.description,
@@ -290,9 +291,13 @@ module.exports.updateSong = async (req, res) => {
 }
 
 module.exports.updateSongFile = async (req, res) => {
-    const fileUrl = req.file ? req.file.path : null
+    const file = req.file
 
-    Song.findByIdAndUpdate(req.params.id, { fileUrl: fileUrl }, { new: true }, (err, doc) => {
+    if (file) {
+        const result = await uploadFile(file)
+    }
+
+    Song.findByIdAndUpdate(req.params.id, { fileUrl: file?.path }, { new: true }, (err, doc) => {
         if (err) {
             console.log(err);
             return res.status(500).send("Could not update song.")
@@ -306,9 +311,13 @@ module.exports.updateSongFile = async (req, res) => {
 }
 
 module.exports.updateSongCover = async (req, res) => {
-    const coverUrl = req.file ? req.file.path : null
+    const cover = req.file
 
-    Song.findByIdAndUpdate(req.params.id, { coverUrl: coverUrl }, { new: true }, (err, doc) => {
+    if (cover) {
+        const result = await uploadFile(cover)
+    }
+
+    Song.findByIdAndUpdate(req.params.id, { coverUrl: cover?.path }, { new: true }, (err, doc) => {
         if (err) {
             console.log(err);
             return res.status(500).send("Could not update song.")

@@ -7,6 +7,7 @@ const User = require("./../models/User")
 const Comment = require("./../models/Comment")
 const Song = require("./../models/Song")
 const Collection = require("./../models/Collection")
+const { uploadFile } = require("../s3")
 
 const getUserPopulated = (user, res) => {
     user.populate("followers").populate("following").execPopulate((err, doc) => {
@@ -333,7 +334,13 @@ module.exports.updateUserPfp = async (req, res) => {
         if (!result)
             res.status(400).send(`User w/ id of ${req.params.id} does not exist.`)
 
-        result.pfpUrl = req.file ? req.file.path : null
+        const file = req.file
+
+        if (file) {
+            await uploadFile(file)
+        }
+
+        result.pfpUrl = file?.path
 
         const updatedResult = await result.save()
         getUserPopulated(updatedResult, res)
