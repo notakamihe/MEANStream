@@ -1,0 +1,17 @@
+.cover {
+    width: 6rem; 
+    min-height: 6rem; 
+    background-color: tomato;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('/assets/song-placeholder.png');
+}
+
+.title {
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 1.2rem;
+    line-height: 1.2rem!important;
+    text-overflow: ellipsis;
+}

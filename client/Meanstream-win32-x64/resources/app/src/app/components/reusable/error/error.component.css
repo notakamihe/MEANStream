@@ -1,0 +1,12 @@
+.error {
+    text-transform: capitalize;
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 25%, #ff00aa);;
+    border-radius: 2rem; 
+    border: none; 
+    padding: 0.25rem 0.75rem;
+    outline: none;
+    color: #fff;
+    width: fit-content;
+    font-weight: bold;
+    margin: 0 auto;
+}

@@ -1,0 +1,165 @@
+<div class="col-12">
+    <a 
+        class="px-3 py-1 d-flex color-on-hover no-decor" 
+        style="flex-direction: column; flex: 1; background-color: #0001; border-radius: 0.4rem;"
+        *ngIf="variant == 'v1'"
+        routerLink="/tabs/users/{{user?.username}}/songs/{{song?.slug}}"
+    >
+        <p class="p-0 m-0" style="font-size: 0.9rem; margin: 0; line-height: normal;">
+            {{comment?.user.username}}
+        </p>
+        <p 
+            class="m-0 text-center mb-2 content" 
+            style="font-size: smaller; font-weight: bold; line-height: normal; font-style: italic;"
+        >
+            {{comment?.content}}
+        </p>
+        <div class="d-flex" style="margin-top: auto; align-items: center; flex-wrap: wrap;">
+            <div 
+                class="d-flex" 
+                style="margin-left: auto; align-self: flex-end; align-items: center;"
+            >
+                <div class="d-flex p-0">
+                    <span style="font-size: 0.8rem;">{{comment?.likes.length}}</span>
+                    <mat-icon 
+                        style="font-size: 1rem;"
+                        [style.color]="isLiked ? 'var(--main-color)' : '#000'"
+                    >
+                        favorite
+                    </mat-icon>
+                </div>
+                <div class="d-flex p-0">
+                    <span style="font-size: 0.8rem;">{{replies?.length}}</span>
+                    <mat-icon style="font-size: 1rem;">chat_bubble</mat-icon>
+                </div>
+                <span style="font-size: 0.8rem;">{{timeAgo(comment?.createdOn)}}</span>
+            </div>
+        </div>
+    </a>
+    <div 
+        class="px-3 py-1 d-flex bottom-line-gradient" 
+        style="flex-direction: column; flex: 1;"
+        *ngIf="variant == 'v2'"
+    >
+        <div class="d-flex m-0" style="align-items: baseline; color: var(--main-color);">
+            <mat-icon style="font-size: smaller;" class="m-0 p-0">north</mat-icon>
+            <p style="font-size: smaller; font-style: italic;" class="m-0 p-0">
+                {{comment?.repliedTo?.user.username || song?.title}}
+            </p>
+        </div>
+        <div class="d-flex m-0">
+            <p 
+                class="p-0 m-0 mb-2" 
+                style="font-size: 0.9rem; margin: 0; flex-grow: 1; font-weight: bold;"
+            >
+                {{comment?.user.username}}
+            </p>
+            <p 
+                class="p-0 m-0 mb-2" 
+                style="font-size: 0.9rem; margin: 0; margin-left: auto; letter-spacing: 0;"
+            >
+                {{toMMMMDDYYYY(comment.createdOn)}}
+            </p>
+        </div>
+        <p 
+            class="m-0 mb-2" 
+            style="font-size: 0.9rem;"
+        >
+            {{comment?.content}}
+        </p>
+        <div class="d-flex">
+            <div class="d-flex" style="margin-top: auto; align-items: center; flex-wrap: wrap;">
+                <button 
+                    class="d-flex no-btn" 
+                    style="height: fit-content; align-self: flex-start;"
+                    (click)="removeComment()"
+                    *ngIf="currentUserService.isAuthorized(comment?.user._id)"
+                >
+                    <mat-icon style="font-size: 1rem;">delete</mat-icon>
+                </button>
+                <button 
+                    class="d-flex no-btn" 
+                    style="height: fit-content; align-self: flex-start;"
+                    (click)="toggleLike()"
+                >
+                    <mat-icon 
+                        style="font-size: 1rem;"
+                        [style.color]="isLiked ? 'var(--main-color)' : '#000'"
+                    >
+                        favorite
+                    </mat-icon>
+                </button>
+                <button 
+                    class="d-flex no-btn" 
+                    style="height: fit-content; align-self: flex-start;"
+                    (click)="replyMode = !replyMode"
+                >
+                    <mat-icon style="font-size: 1rem;">reply</mat-icon>
+                </button>
+                <button 
+                    class="btn-3 mx-3" 
+                    (click)="showReplies = true"
+                    *ngIf="replies?.length && !showReplies"
+                >
+                    Show replies
+                </button>
+                <button 
+                    class="btn-5 mx-3" 
+                    (click)="showReplies = false"
+                    *ngIf="replies?.length && showReplies"
+                >
+                    Hide replies
+                </button>
+            </div>
+            <div class="d-flex" style="margin-left: auto; align-items: center; flex-wrap: wrap;">
+                <div 
+                    class="d-flex" 
+                    style="margin-left: auto; align-self: flex-end; align-items: center;"
+                >
+                    <div class="d-flex p-0">
+                        <span style="font-size: 0.8rem;">{{comment?.likes.length}}</span>
+                        <mat-icon style="font-size: 1rem;">favorite</mat-icon>
+                    </div>
+                    <div class="d-flex p-0">
+                        <span style="font-size: 0.8rem;">{{replies?.length}}</span>
+                        <mat-icon style="font-size: 1rem;">chat_bubble</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mx-auto mt-3 d-flex py-2 align-items-center" *ngIf="replyMode">
+            <textarea 
+                class="text-field" 
+                style="flex: 1; height: 100%;"
+                rows="3" 
+                placeholder="{{ error || 'Reply goes here'}}"
+                name="reply"
+                [(ngModel)]="reply"></textarea>
+            <div class="d-flex" style="flex-direction: column; margin-left: 0.25rem;">
+                <button 
+                    class="btn-1" 
+                    style="border-radius: 0.25rem; flex: 1; margin: 0.1rem 0;"
+                    (click)="addReply()"
+                >
+                    Reply
+                </button>
+                <button 
+                    class="btn-1" 
+                    style="border-radius: 0.25rem; flex: 1; margin: 0.1rem 0; background: #0004!important;"
+                    (click)="replyMode = false"
+                >
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="variant == 'v2' && showReplies" style="padding-left: 1rem;">
+        <div *ngFor="let reply of replies; let i = index">
+            <app-comment 
+                [comment]="reply" 
+                [variant]="'v2'" 
+                (onReply)="emitOnReply()"
+                (onRemove)="emitOnRemove()"></app-comment>
+        </div>
+    </div>
+</div>
