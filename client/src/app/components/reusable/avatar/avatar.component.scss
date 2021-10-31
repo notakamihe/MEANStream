@@ -1,0 +1,6 @@
+.avatar-border {
+  border: solid 1px transparent;
+  background-image: linear-gradient(var(--primary-bg), var(--primary-bg)), radial-gradient(circle at top left, #f33,#f50);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}

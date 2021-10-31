@@ -1,0 +1,37 @@
+<div 
+    class="col-12 d-flex" 
+    style="height: 100vh; flex-direction: column; align-items: center; justify-content: center;"
+>
+    <app-back></app-back>
+    <h4 class="d-flex" style="text-align: center; font-weight: bold; justify-self: start;">Login</h4>
+    <div class="text-center" style="width: 100%;">
+        <div class="my-2">
+            <app-error [message]="error"></app-error>
+        </div>
+        <form style="margin: auto; text-align: center;" class="mt-3 col-8" (submit)="logIn()">
+            <input 
+                type="text" 
+                class="no-outline text-field my-2 col-12" 
+                placeholder="Username or email"
+                [(ngModel)]="usernameOrEmail"
+                name="usernameOrEmail"
+            >
+            <input 
+                type="password" 
+                class="no-outline text-field my-2 col-12"
+                placeholder="Password"
+                [(ngModel)]="password"
+                name="password"
+            >
+            <input type="submit" value="Sign in" class="btn-1 mt-4">
+        </form>
+        <div class="mt-2">
+            <a
+                class="text1"
+                routerLink="/register" 
+            >
+                Register
+            </a>
+        </div>
+    </div>
+</div>

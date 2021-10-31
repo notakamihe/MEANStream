@@ -1,0 +1,43 @@
+{
+  "asar": false,
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.map",
+    "!package.json",
+    "!package-lock.json"
+  ],
+  "extraResources": [
+    {
+      "from": "dist",
+      "to": "app",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ],
+  "win": {
+    "icon": "dist/assets/icons/favicon.ico",
+    "target": [
+      "portable"
+    ]
+  },
+  "portable": {
+    "splashImage": "dist/assets/icons/meanstream-square.bmp"
+  },
+  "mac": {
+    "icon": "dist/assets/icons/favicon.ico",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist/assets/icons/favicon.ico",
+    "target": [
+      "AppImage"
+    ]
+  }
+}

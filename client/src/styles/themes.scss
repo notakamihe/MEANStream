@@ -1,0 +1,21 @@
+:root {
+  --primary-bg: #fff;
+  --text-color: #000;
+  --text-muted-color: #000b;
+  --card-bg: #0001;
+  --box-shadow-color: #0004;
+  --collection-category-color: #f50;
+  --player-bg: var(--primary-bg);
+  --player-track-color: #0003;
+}
+
+[data-theme='dark'] {
+  --primary-bg: #111;
+  --text-color: #fff;
+  --text-muted-color: #fff7;
+  --card-bg: #fff1;
+  --box-shadow-color: #fff2;
+  --collection-category-color: #f50;
+  --player-bg: #000;
+  --player-track-color: var(--card-bg);
+}

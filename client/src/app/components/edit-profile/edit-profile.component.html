@@ -1,0 +1,56 @@
+<div class="mx-auto py-5 col-12 text-center" style="padding-bottom: 9rem;">
+    <app-back></app-back>
+    <h4 style="text-align: center; font-weight: bold;">Edit Profile</h4>
+    <div>
+        <app-error [message]="error"></app-error>
+    </div>
+    <form style="margin: auto; text-align: center;" class="mt-5 col-8" (submit)="updateProfile()">
+        <div class="d-flex mx-auto justify-content-center my-3">
+            <input 
+                type="text" 
+                class="col-5 mx-2 no-outline text-field" 
+                placeholder="Username"
+                name="username"
+                [(ngModel)]="username"
+            >
+            <input 
+                type="text" 
+                class="col-7 mx-2 no-outline text-field"
+                placeholder="Email"
+                name="email"
+                [(ngModel)]="email"
+            >
+        </div>
+        <div class="d-flex col-12 mx-auto justify-content-center my-3" style="align-items: center;">
+            <div 
+                style="width: 8rem; height: 8rem; border-radius: 50%; position: relative;" 
+                class="bg-dark fit-background"
+                [style.backgroundImage]="'url(' + uri + ')'"
+            >
+                <div style="position: absolute; top: 50%; left: 0; right: 0;">
+                    <label 
+                        for="upload-photo"
+                        class="text-light p-1" 
+                        style="font-size: 0.7rem; text-transform: uppercase; border: none; background-color: #fff4; border-radius: 1rem; font-weight: bold; cursor: pointer;"
+                    >
+                        Choose photo
+                    </label>
+                    <input 
+                        type="file" 
+                        id="upload-photo" 
+                        class="d-none" 
+                        (change)="handleChangePfp($event.target.files)"
+                    >
+                </div>
+            </div>
+        </div>
+        <textarea 
+            class="col-12 no-outline text-field" 
+            placeholder="Description" 
+            rows="5"
+            name="description"
+            [(ngModel)]="description"
+        ></textarea>
+        <input type="submit" value="Save" class="btn-1 mt-4">
+    </form>
+</div>

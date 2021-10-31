@@ -1,0 +1,40 @@
+.cover {
+    width: 6rem; 
+    min-height: 6rem; 
+    background-color: tomato;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cover-small {
+    width: 3.75rem; 
+    height: 3.75rem; 
+    background-color: tomato;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: inherit;
+}
+
+.cover:hover {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.cover:hover > button {
+    display: flex!important;
+}
+
+.title {
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 1.2rem;
+    line-height: 1.2rem!important;
+    text-overflow: ellipsis;
+}
+
+.color-text-on-hover:hover * {
+    color: var(--main-color)!important;
+}

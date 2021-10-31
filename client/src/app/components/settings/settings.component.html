@@ -1,0 +1,146 @@
+<div class="mx-auto text-center pt-5" style="padding-bottom: 9rem;">
+  <h4 class="mb-5" style="font-weight: bold;">Settings</h4>
+  <div class="mx-auto" style="width: 400px;">
+    <div class="d-flex">
+      <div 
+        class="d-inline-block text-uppercase px-2 pb-2 mx-1" 
+        style="font-weight: 300; border-bottom: 1px solid var(--main-color); flex: 1; cursor: pointer;"
+        [style.borderColor]="tabIdx === 0 ? 'var(--main-color)!important' : 'var(--text-color)!important'"
+        (click)="tabIdx = 0"
+      >
+        <p 
+          class="p-0 m-0"
+          [style.color]="tabIdx === 0 ? 'var(--main-color)!important' : 'var(--text-color)!important'"
+        >
+          Profile
+        </p>
+      </div>
+      <div 
+        class="d-inline-block text-uppercase px-2 pb-2 mx-1" 
+        style="font-weight: 300; border-bottom: 1px solid var(--main-color); flex: 1; cursor: pointer;"
+        (click)="tabIdx = 1"
+        [style.borderColor]="tabIdx === 1 ? 'var(--main-color)!important' : 'var(--text-color)!important'"
+      >
+        <p 
+          class="p-0 m-0"
+          [style.color]="tabIdx === 1 ? 'var(--main-color)!important' : 'var(--text-color)!important'"
+        >
+          Activity
+        </p>
+      </div>
+      <div 
+        class="d-inline-block text-uppercase px-2 pb-2 mx-1" 
+        style="font-weight: 300; border-bottom: 1px solid var(--main-color); flex: 1; cursor: pointer;"
+        (click)="tabIdx = 2"
+        [style.borderColor]="tabIdx === 2 ? 'var(--main-color)!important' : 'var(--text-color)!important'"
+      >
+        <p 
+          class="p-0 m-0"
+          [style.color]="tabIdx === 2 ? 'var(--main-color)!important' : 'var(--text-color)!important'"
+        >
+          Help
+        </p>
+      </div>
+    </div>
+    <div *ngIf="tabIdx === 0" class="mt-5">
+      <div class="my-2">
+          <button 
+            class="col-12 d-block p-2 no-decor color-on-hover"
+            style="background-color: #0000; border: none; border-radius: 0.4rem;"
+            (click)="logOutUser()"
+          >
+            Log out
+          </button>
+      </div>
+      <div class="my-2">
+          <a 
+            class="col-12 d-block p-2 no-decor color-on-hover"
+            style="background-color: #0000; border: none; border-radius: 0.4rem;"
+            routerLink="/tabs/profile/edit"
+          >
+            Edit profile
+          </a>
+      </div>
+      <div class="my-2">
+          <a 
+            class="col-12 d-block p-2 no-decor color-on-hover"
+            style="background-color: #0000; border: none; border-radius: 0.4rem;"
+            routerLink="/tabs/profile/change-password"
+          >
+            Change password
+          </a>
+      </div>
+      <div class="my-2">
+          <button 
+            class="col-12 d-block p-2 no-decor color-on-hover"
+            style="background-color: #0000; border: none; border-radius: 0.4rem;"
+            (click)="deleteProfile()"
+          >
+            Delete profile
+          </button>
+      </div>
+      <div class="d-flex align-items-center mt-5 justify-content-center">
+        <mat-icon 
+          class="mx-2" 
+          [style.color]="!darkMode ? 'var(--main-color)' : 'var(--text-color)'"
+        >
+          light_mode
+        </mat-icon>
+        <mat-slide-toggle 
+          color="#f00" 
+          class="mx-2" 
+          [checked]="darkMode"
+          (change)="toggleTheme()"
+        >
+        </mat-slide-toggle>
+        <mat-icon 
+          class="mx-2" 
+          [style.color]="darkMode ? 'var(--main-color)' : 'var(--text-color)'"
+        >
+          dark_mode
+        </mat-icon>
+      </div>
+    </div>
+    <div *ngIf="tabIdx === 1" class="mt-5">
+      <div class="my-2">
+        <button 
+          class="col-12 d-block p-2 no-decor color-on-hover"
+          style="background-color: #0000; border: none; border-radius: 0.4rem;"
+          (click)="privateAll()"
+        >
+          Private all songs and collections
+        </button>
+      </div>
+      <div class="my-2">
+        <button 
+          class="col-12 d-block p-2 no-decor color-on-hover"
+          style="background-color: #0000; border: none; border-radius: 0.4rem;"
+          (click)="removeAllLikesAndComments()"
+        >
+            Remove all likes and comments
+        </button>
+      </div>
+    </div>
+    <div *ngIf="tabIdx === 2" class="mt-5">
+      <div class="my-2">
+        <a 
+          class="col-12 d-block p-2 no-decor color-on-hover"
+          style="background-color: #0000; border: none; border-radius: 0.4rem;" 
+          href="mailto:notakamihe@gmail.com"
+        >
+          Email
+        </a>
+      </div>
+      <div class="my-2">
+        <a 
+          class="col-12 d-block p-2 no-decor color-on-hover"
+          style="background-color: #0000; border: none; border-radius: 0.4rem;"
+          (click)="openGithub()"
+        >
+          Github
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

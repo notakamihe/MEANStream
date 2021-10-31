@@ -1,0 +1,42 @@
+<div class="col-12 d-flex m-0 p-0">
+    <app-avatar 
+      src="{{pfpUrl}}" 
+      [size]="96" 
+      [showBorder]="false"
+      [round]="false">
+    </app-avatar>
+    <a 
+      style="background-color: var(--card-bg); border-radius: 0 0.5rem 0.5rem 0; flex: 1; height: 96px;" 
+      class="p-3 color-on-hover no-decor"
+        routerLink="/tabs/users/{{user.username}}">
+        <p class="m-0 p-0" style="line-height: normal">{{user.username}}</p>
+        <p 
+          style="font-size: smaller; height: 1.72rem; line-height: 1!important;" 
+          class="pt-0 description m-0 mb-auto"
+        >
+            {{user.description}}
+        </p>
+        <div class="d-flex" style="justify-content: flex-end;">
+            <div class="d-flex align-items-center m-0 p-0">
+                <div class="d-flex align-items-center p-0" style="margin-right: 4px;">
+                    <mat-icon style="font-size: 0.8rem;" class="m-0 p-0">people</mat-icon>
+                    <p style="font-size: 0.8rem;" class="m-0 p-0">{{user.followers.length | abbreviatedNumber}}</p>
+                </div>
+                <div class="d-flex align-items-center p-0" style="margin-right: 4px;">
+                    <mat-icon style="font-size: 0.8rem;" class="m-0 p-0">arrow_forward</mat-icon>
+                    <p style="font-size: 0.8rem;" class="m-0 p-0">{{user.following.length | abbreviatedNumber}}</p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center m-0 p-0">
+                <div class="d-flex align-items-center p-0" style="margin-right: 4px;">
+                    <mat-icon style="font-size: 0.8rem;" class="m-0 p-0">audiotrack</mat-icon>
+                    <p style="font-size: 0.8rem;" class="m-0 p-0">{{numSongs}}</p>
+                </div>
+                <div class="d-flex align-items-center p-0">
+                    <mat-icon style="font-size: 0.8rem;" class="m-0 p-0">album</mat-icon>
+                    <p style="font-size: 0.8rem;" class="m-0 p-0">{{numCollections}}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

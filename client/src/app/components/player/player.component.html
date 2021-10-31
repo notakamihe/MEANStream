@@ -1,0 +1,93 @@
+<div>
+  <ng-template #content let-modal>
+    <app-add-to-playlist-modal 
+    style="width: 500px; height: 500px;" 
+    [song]="song"></app-add-to-playlist-modal>
+  </ng-template>
+  <a 
+      *ngIf="song && user"
+      class="d-block no-decor m-0 p-0 text-center title"
+      routerLink="/tabs/users/{{user?.username}}/songs/{{song?.slug}}"
+      style="margin-bottom: -10px; z-index: 69;"
+  >
+      {{song?.title}} &nbsp;&#183;&nbsp; {{user?.username}}
+  </a>
+  <div class="d-flex" style="align-items: center;">
+      <audio src="{{uri}}" (ended)="onEnd()">
+          <source 
+              type="audio/mp3"
+          >
+      </audio>
+      <div style="flex: 3; align-items: center; justify-content: center;" class="d-flex mb-2">
+          <a
+              class="cover mx-2 no-decor" 
+              [style.backgroundImage]="'url(' + coverUri + ')'"
+              routerLink="/tabs/users/{{user?.username}}/songs/{{song?.slug}}"
+              *ngIf="song && user"
+          ></a>
+          <button class="no-border mt-2 btn-2" (click)="skipPrev()">
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">skip_previous</mat-icon>
+          </button>
+          <button 
+              *ngIf="!audio.paused" 
+              class="no-border mt-2 btn-2"
+              style="padding: 0; height: auto;" 
+              (click)="pause()"
+          >
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">pause</mat-icon>
+          </button>
+          <button 
+              *ngIf="audio.paused" 
+              class="no-border mt-2 btn-2" 
+              style="padding: 0; height: auto;" (click)="play()"
+          >
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">play_arrow</mat-icon>
+          </button>
+          <button 
+              class="no-border mt-2 btn-2" 
+              style="padding: 0; height: auto;"
+              (click)="skipNext()"
+          >
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">skip_next</mat-icon>
+          </button>
+      </div>
+      <div class="d-flex" style="flex: 7; align-items: center; justify-content: center;">
+          <p 
+              class="mx-1 my-0"
+              style="font-size: smaller; font-weight: bold;"
+              *ngIf="window.innerWidth >= 700"
+          >
+              {{song ? getProgressMMSS() : ''}}
+          </p>
+          <div class="col-10 player" (click)="changeTime($event)">
+              <div class="player-progress" [ngStyle]="{'width': currentTimePercentage + '%'}"></div>
+          </div>
+          <p 
+              class="mx-1 my-0"
+              style="font-size: smaller; font-weight: bold;"
+              *ngIf="window.innerWidth >= 700"
+          >
+              {{song ? getDurationMMSS(audio.duration) : ''}}
+          </p>
+      </div>
+      <div style="flex: 3; align-items: center; justify-content: center;" class="d-flex">
+          <button class="no-border mt-2 btn-2" style="padding: 0; height: auto;" (click)="goBack10s()">
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">replay_10</mat-icon>
+          </button>
+          <button class="no-border mt-2 btn-2" style="padding: 0; height: auto;" (click)="goForward10s()">
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">forward_10</mat-icon>
+          </button>
+          <button class="no-border mt-2 btn-2" style="padding: 0; height: auto;" (click)="open(content)">
+              <mat-icon style="margin: auto 0.5rem; font-size: 1.7rem;">playlist_add</mat-icon>
+          </button>
+          <input 
+              type="range" 
+              class="volume-slider" 
+              min="1" 
+              max="100" 
+              (change)="changeVolume($event.target.value)"
+              value="audio.volume"
+          >
+      </div>
+  </div>
+</div>

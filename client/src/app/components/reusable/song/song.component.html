@@ -1,0 +1,95 @@
+<div class="col-12 d-flex no-decor p-0" style="background-color: var(--card-bg); border-radius: 1rem;" *ngIf="variant == 'v1'">
+    <div class="cover d-flex align-items-center justify-content-center"
+        [style.backgroundImage]="'url(' + coverUrl + ')'">
+        <button 
+            style="border-radius: 50%; width: 3rem; height: 3rem;" 
+            class="btn-8 p-2 d-none"
+            (click)="changeSong(currentSongService, [song])"
+        >
+            <mat-icon style="color: #fff;">play_arrow</mat-icon>
+        </button>
+    </div>
+    <a class="p-3 d-flex color-on-hover no-decor" style="flex-direction: column; flex: 1;"
+        routerLink="/tabs/users/{{ user?.username }}/songs/{{ song?.slug }}">
+        <p 
+          *ngIf="showUsername" 
+          style="font-size: 0.9rem; margin: 0; line-height: normal; font-weight: 700; color: var(--text-muted-color)">
+            {{user?.username}}
+        </p>
+        <p class="m-0 title">{{ song?.title }}</p>
+        <div class="d-flex" style="margin-top: auto; align-items: center; flex-wrap: wrap;">
+            <div class="d-flex" style="margin-left: auto; align-self: flex-end; align-items: center;">
+                <div class="d-flex p-0" style="margin-right: 6px;">
+                    <mat-icon style="font-size: 1rem;">play_arrow</mat-icon>
+                    <span style="font-size: 0.8rem;">{{song?.plays | abbreviatedNumber}}</span>
+                  </div>
+                <div class="d-flex p-0" style="margin-right: 6px;">
+                    <mat-icon style="font-size: 1rem;">favorite</mat-icon>
+                    <span style="font-size: 0.8rem;">{{song?.likes.length | abbreviatedNumber}}</span>
+                </div>
+                <div class="d-flex p-0" style="margin-right: 6px;">
+                    <mat-icon style="font-size: 1rem;">chat_bubble</mat-icon>
+                    <span style="font-size: 0.8rem;">{{song?.comments?.length | abbreviatedNumber}}</span>
+                </div>
+                <span style="font-size: 0.8rem;">{{song?.createdOn | timeAgo}}</span>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="d-flex align-items-center no-decor color-text-on-hover p-0" *ngIf="variant == 'v2'">
+    <div class="col-12 d-flex no-decor p-0" style="border-radius: 1rem;">
+        <div class="cover" [style.backgroundImage]="'url(' + coverUrl + ')'"></div>
+        <div class="d-flex align-items-center" style="flex: 1">
+            <a class="px-3 py-1 d-flex no-decor" style="flex-direction: column; flex: 1; height: 100%;"
+                routerLink="/tabs/users/{{user?.username}}/songs/{{song?.slug}}">
+                <p style="font-size: 0.9rem; margin: 0; line-height: normal; font-weight: 700; color: var(--text-muted-color)">
+                  {{user?.username}}
+                </p>
+                <p class="m-0 title" style="max-height: 2.6rem!important;">{{song?.title}}</p>
+                <div class="d-flex" style="margin-top: auto; align-items: center; flex-wrap: wrap;">
+                    <div class="d-flex" style="align-items: center; margin-top: auto;">
+                        <div class="d-flex p-0" style="margin-right: 8px;">
+                            <mat-icon style="font-size: 1rem;">play_arrow</mat-icon>
+                            <span style="font-size: 0.8rem;">{{song?.plays | abbreviatedNumber}}</span>
+                        </div>
+                        <div class="d-flex p-0" style="margin-right: 8px;">
+                            <mat-icon style="font-size: 1rem;">favorite</mat-icon>
+                            <span style="font-size: 0.8rem;">{{song?.likes.length | abbreviatedNumber}}</span>
+                        </div>
+                        <div class="d-flex p-0" style="margin-right: 8px;">
+                            <mat-icon style="font-size: 1rem;">chat_bubble</mat-icon>
+                            <span style="font-size: 0.8rem;">{{song?.comments.length | abbreviatedNumber}}</span>
+                        </div>
+                        <span style="font-size: 0.8rem;">{{song?.createdOn | timeAgo}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-12 d-flex no-decor p-0" style="background-color: var(--card-bg); border-radius: 1rem; cursor: pointer;"
+    *ngIf="variant == 'v3'">
+    <div class="cover-small" [style.backgroundImage]="'url(' + coverUrl + ')'"></div>
+    <div class="mx-2 d-flex no-decor" style="flex-direction: column; flex: 1;">
+        <p style="font-size: 0.9rem; margin: 0; line-height: normal; font-size: 0.75rem; font-weight: 700; color: var(--text-muted-color)">
+          {{user?.username}}
+        </p>
+        <p class="m-0 title p-0 no-outline" style="font-size: smaller;">{{song?.title}}</p>
+        <div class="d-flex" style="margin-top: auto; align-items: center; flex-wrap: wrap;">
+            <div class="d-flex" style="margin-left: auto; align-self: flex-end; align-items: center;">
+                <div class="d-flex p-0 align-items-center">
+                    <mat-icon style="transform: scale(0.6, 0.6);">play_arrow</mat-icon>
+                    <span style="font-size: 0.7rem;">{{song?.plays | abbreviatedNumber}}</span>
+                </div>
+                <div class="d-flex p-0 align-items-center">
+                    <mat-icon style="transform: scale(0.6, 0.6);">favorite</mat-icon>
+                    <span style="font-size: 0.7rem;">{{song?.likes.length | abbreviatedNumber}}</span>
+                </div>
+                <div class="d-flex p-0 align-items-center">
+                    <mat-icon style="transform: scale(0.6, 0.6);">chat_bubble</mat-icon>
+                    <span style="font-size: 0.7rem;">{{song?.comments.length | abbreviatedNumber}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

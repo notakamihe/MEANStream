@@ -1,0 +1,92 @@
+<div 
+    class="col-12 d-flex p-0" 
+    style="background-color: var(--card-bg); border-radius: 1rem;"
+    *ngIf="variant == 'v1'"
+>
+    <div 
+        class="cover d-flex align-items-center justify-content-center"
+        [style.backgroundImage]="'url(' + coverUrl + ')'"
+    >
+        <button 
+            style="border-radius: 50%; width: 3rem; height: 3rem;"
+            class="btn-8 p-2 d-none"
+            (click)="changeSong()"
+        >
+            <mat-icon style="color: #fff;">play_arrow</mat-icon>
+        </button>
+    </div>
+    <a 
+        class="px-3 pb-3 pt-2 d-flex color-on-hover no-decor" 
+        style="flex-direction: column; flex: 1;"
+        routerLink="/tabs/users/{{collection?.user.username}}/collections/{{collection?.slug}}"
+    >
+        <p 
+          *ngIf="showUsername" 
+          style="font-size: 0.9rem; margin: 0; line-height: normal; font-weight: 700; color: var(--text-muted-color)"
+        >
+            {{collection?.user.username}}
+        </p>
+        <p 
+          class="m-0 p-0" 
+          style="line-height: 1.15; font-size: smaller; text-transform: capitalize; color: var(--collection-category-color); opacity: 0.75;"
+        >
+            {{collection?.category | collectionCase}}
+        </p>
+        <p class="m-0 title" >{{collection?.title}}</p>
+        <div class="d-flex" style="margin-top: auto; align-items: center; flex-wrap: wrap;">
+            <div 
+                class="d-flex" 
+                style="margin-left: auto; align-self: flex-end; align-items: center;"
+            >
+                <div class="d-flex p-0" style="margin-right: 6px;">
+                    <mat-icon style="font-size: 1rem;">play_arrow</mat-icon>
+                    <span style="font-size: 0.8rem;">{{collection?.totalPlays | abbreviatedNumber}}</span>
+                </div>
+                <div class="d-flex p-0" style="margin-right: 6px;">
+                    <mat-icon style="font-size: 1rem;">favorite</mat-icon>
+                    <span style="font-size: 0.8rem;">{{collection?.totalLikes}}</span>
+                </div>
+                <div class="d-flex p-0" style="margin-right: 6px;">
+                    <mat-icon style="font-size: 1rem;">audiotrack</mat-icon>
+                    <span style="font-size: 0.8rem;">{{collection?.songs.length}}</span>
+                </div>
+                <span style="font-size: 0.8rem;">{{this.year}}</span>
+            </div>
+        </div>
+    </a>
+</div>
+<a 
+    class="col-12 d-flex no-decor p-0" 
+    style="background-color: var(--primary-bg); border-radius: 1rem;"
+    *ngIf="variant == 'v2'"
+>
+    <app-avatar [size]="80" [src]="coverUrl" [round]="false" [showBorder]="false">
+      <button 
+          style="border-radius: 50%; width: 2rem; height: 2rem;"
+          class="btn-8 p-2 d-none"
+          (click)="changeSong()"
+      >
+          <mat-icon style="color: #fff;">play_arrow</mat-icon>
+      </button>
+    </app-avatar>
+    <div 
+        class="px-3 py-1 d-flex" 
+        style="flex-direction: column; flex: 1; background-color: var(--card-bg);"
+        [ngStyle]="isSongInCollection ? {'background-color': 'var(--main-color)', 'color': '#fff!important'} : {}"
+    >
+        <div class="d-flex align-items-center m-0 p-0">
+            <p 
+              class="m-0 p-0" style="font-size: smaller; text-transform: capitalize;"
+              [style.color]="isSongInCollection ? '#fff!important' : 'var(--text-color)'"
+            >
+                {{ collection?.category | collectionCase }}
+            </p>
+        </div>
+        <p 
+          class="m-0 title p-0" 
+          [style.color]="isSongInCollection ? '#fff!important' : 'var(--text-color)'"
+        >
+          {{ collection?.title }}
+        </p>
+    </div>
+</a>

@@ -1,0 +1,47 @@
+<div style="margin-bottom: 9rem;">
+    <div class="text-center py-2 mb-5"
+        style="background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500); position: relative;">
+        <a class="d-flex align-items-center justify-content-center my-0 no-decor" style="cursor: pointer;"
+            (click)="navigateToHomeOrUserDetail()">
+            <app-avatar [size]="30" src="{{pfpUrl}}"></app-avatar>
+            <p class="my-0 mx-2 p-0" style="color: #fffa;">{{user?.username}}</p>
+        </a>
+        <p class="m-0 p-0" style="font-size: smaller; text-transform: capitalize; color: #fffa;">
+            {{category}}:
+            <span class="m-0 p-0" style="color: #fff; font-weight: bold;">
+                {{data?.length}}
+            </span>
+        </p>
+        <app-back></app-back>
+    </div>
+    <div class="px-5">
+        <div *ngIf="category == 'songs'">
+            <div class="my-3" *ngFor="let item of data; let i = index;">
+                <app-song [song]="item" [showUsername]="false"></app-song>
+            </div>
+        </div>
+        <div *ngIf="category == 'collections'">
+            <div class="my-3" *ngFor="let item of data; let i = index;">
+                <a class="no-decor" routerLink="{{item?.slug}}">
+                    <app-collection [collection]="item" [showUsername]="false"></app-collection>
+                </a>
+            </div>
+        </div>
+        <div *ngIf="category == 'liked'">
+            <div *ngFor="let item of data; let i = index;" class="my-3">
+                <app-comment 
+                    *ngIf="isComment(item)" 
+                    [comment]="item" 
+                    [showUsername]=true>
+                </app-comment>
+                <app-song *ngIf="isSong(item)" [song]="item" [showUsername]=true>
+                </app-song>
+            </div>
+        </div>
+        <div *ngIf="category == 'comments'">
+            <div *ngFor="let item of data; let i = index;" class="my-3">
+                <app-comment [comment]="item" [showUsername]="false"></app-comment>
+            </div>
+        </div>
+    </div>
+</div>

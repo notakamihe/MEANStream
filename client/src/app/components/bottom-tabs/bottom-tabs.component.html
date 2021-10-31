@@ -1,0 +1,40 @@
+<div>
+    <router-outlet>
+    </router-outlet>
+    <div style="background-color: var(--player-bg);" class="fixed-bottom">
+        <div 
+          class="d-flex py-1" 
+          style="justify-content: center; box-shadow: 0 -0.4rem 1rem -0.8rem var(--box-shadow-color); align-items: center;"
+        >
+            <button 
+                class="no-btn mx-5 no-outline" 
+                [ngClass]="tab == '' ? 'btn-2-selected' : 'btn-2'"
+                (click)="switchTab('')"
+            >
+                <mat-icon style="font-size: 1.25rem; margin: 0;">home</mat-icon>
+            </button>
+            <button 
+                class="no-btn mx-5 btn-2 no-outline" 
+                [ngClass]="tab == 'explore' ? 'btn-2-selected' : 'btn-2'"
+                (click)="switchTab('explore')"
+            >
+                <mat-icon style="font-size: 1.25rem; margin: 0;">explore</mat-icon>
+            </button>
+            <button 
+                class="no-btn mx-5 btn-2 no-outline" 
+                [ngClass]="tab == 'create' ? 'btn-2-selected' : 'btn-2'" 
+                (click)="switchTab('create')"
+            >
+                <mat-icon style="font-size: 1.25rem; margin: 0;">add</mat-icon>
+            </button>
+            <button 
+                class="no-btn mx-5 btn-2 no-outline" 
+                [ngClass]="tab == 'settings' ? 'btn-2-selected' : 'btn-2'" 
+                (click)="switchTab('settings')"
+            >
+                <mat-icon style="font-size: 1.25rem; margin: 0;">settings</mat-icon>
+            </button>
+        </div>
+        <app-player></app-player>
+    </div>
+</div>

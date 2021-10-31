@@ -1,0 +1,38 @@
+.player {
+    height: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: var(--player-track-color);
+    margin: 0;
+    padding: 0;
+}
+
+.player-progress {
+    height: 100%;
+    background: linear-gradient(45deg, var(--main-color) 0%, var(--main-color) 55%, #ff5500);
+    background-color: #000;
+    border-radius: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-size: smaller; 
+    font-weight: bold; 
+    background: linear-gradient(to right, var(--main-color), #ff5500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cover {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.3rem;
+}
+
+.volume-slider {
+    width: 3rem;
+}
