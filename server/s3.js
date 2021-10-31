@@ -15,7 +15,7 @@ const s3 = new S3({
 })
 
 function uploadFile(file) {
-  if (process.env.NODE_ENV.trim() === "production") {
+  if (process?.env?.NODE_ENV?.trim() === "production") {
     const fileStream = fs.createReadStream(file.path)
 
     const uploadParams = {

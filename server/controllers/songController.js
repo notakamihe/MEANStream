@@ -294,7 +294,7 @@ module.exports.updateSongFile = async (req, res) => {
     const file = req.file
 
     if (file) {
-      const result = await uploadFile(file)
+      await uploadFile(file)
     }
 
     Song.findByIdAndUpdate(req.params.id, { fileUrl: file?.path }, { new: true }, (err, doc) => {
@@ -314,7 +314,7 @@ module.exports.updateSongCover = async (req, res) => {
     const cover = req.file
 
     if (cover) {
-      const result = await uploadFile(cover)
+      await uploadFile(cover)
     }
 
     Song.findByIdAndUpdate(req.params.id, { coverUrl: cover?.path }, { new: true }, (err, doc) => {
