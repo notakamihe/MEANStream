@@ -12,6 +12,7 @@ import { SongService } from './../../services/song/song.service';
 import { UserService } from './../../services/user/user.service';
 import { changeSong, getServerFileUrl } from './../../utils/utils';
 import { filter, pairwise } from 'rxjs/operators';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-song-detail',
@@ -30,8 +31,6 @@ export class SongDetailComponent implements OnInit {
     public commentMode: boolean = false
     
     public isLiked : boolean
-    
-    public showAddToPlaylist: boolean = false
 
     public changeSong : Function = changeSong
 
@@ -39,7 +38,7 @@ export class SongDetailComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute, private userService: UserService, private songService: SongService, private collectionService: CollectionService, public currentUserService : CurrentUserService,
-        private router : Router, private electronService : ElectronService, public currentSongService : CurrentSongService
+        private router : Router, private electronService : ElectronService, public currentSongService : CurrentSongService, private modalService : NgbModal
     ) {
       if (this.router.getCurrentNavigation().extras.state?.isCreated)
         this.backUrl = "/tabs/create"
@@ -110,6 +109,14 @@ export class SongDetailComponent implements OnInit {
             this.comments = this.comments.sort((a, b) => new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime())
             this.commentsLength = song.comments.length
         })
+    }
+
+    open(content) {
+      if (this.song) {
+        this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        }, (reason) => {
+        });
+      }
     }
 
     toggleLike () {

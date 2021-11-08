@@ -4,8 +4,9 @@
       style="flex-direction: column; flex: 1; background-color: var(--card-bg); border-radius: 0.4rem;"
       routerLink="/tabs/users/{{user?.username}}/songs/{{song?.slug}}"
   >
-      <p *ngIf="showUsername" class="p-0 mb-1" style="font-size: 0.8rem; margin: 0; line-height: normal;">
-          {{comment?.user.username}}
+      <p class="p-0 mb-2" style="font-size: 0.8rem; margin: 0; line-height: normal;">
+          <span *ngIf="showUsername">{{comment?.user?.username}}</span> on 
+          <span class="font-weight-bold" style="color: var(--collection-category-color);">{{song?.title}}</span>
       </p>
       <p 
           class="m-0 text-center mb-2 content" 
