@@ -1,6 +1,8 @@
 # MEANStream
 MEANStream is a desktop music streaming service and player built using the MEAN (Mongo, Express, Angular, Node) stack.
 
+Demo video: https://youtu.be/bZZKlb1PfAY
+
 ![MEANStream](/client/src/assets/logos/meanstreamwide.png)
 
 ## Setup (Local)
